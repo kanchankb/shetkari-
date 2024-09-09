@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    />
+    <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <title>शेतकरी योजना</title>
+    <style>
+      body {
+        font-family: 'Mukta', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            font-weight: 500; 
+      }
+
+      .container {
+        
+        width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+      }
+
+      header {
+        text-align: center;
+            background: #007bff; /* Blue background */
+            color: #fff;
+            padding: 10px;
+            width: 100%;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+      }
+
+      header h1 {
+        font-size: 24px;
+        margin: 0;
+      }
+
+      .button-container {
+        display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            background-color: aliceblue; /* White background */
+            border: 1px solid #ccc;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .big-button {
+        padding: 20px;
+            font-size: 16px;
+            border: none;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 12px;
+            background-color: white; /* Aliceblue button color */
+            color: black; /* Default text color */
+            cursor: pointer;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 0 auto;
+            font-weight: 600; 
+      }
+
+      .big-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .big-button:active {
+            transform: translateY(1px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .big-button:focus {
+            outline: none;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #777;
+        }
+
+        footer h5 {
+            font-weight: 600; /* Bold footer text */
+        }
+
+        .modal-body {
+            max-height: 500px;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+     
+
+      /*  */
+
+      .modal-footer {
+            border-top: none;
+            padding: 20px;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .ok-button {
+            background-color: #007bff; /* Blue background */
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 10px 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .ok-button:hover {
+            background-color: #0056b3; /* Darker blue */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+     
+
+        .ok-button:active {
+            background-color: #004494; /* Even darker blue */
+        }
+
+        table {
+            width: 100%;
+            margin-bottom: 1rem;
+            color: #212529;
+        }
+
+        th {
+            padding: 0.75rem;
+            vertical-align: top;
+            border-top: 2px solid #dee2e6;
+            background-color: #007bff;
+            color: #fff;
+            font-weight: 700; /* Bold table header text */
+        }
+
+        td {
+            padding: 0.75rem;
+            vertical-align: top;
+            border-top: 1px solid #dee2e6;
+            font-weight: 500; /* Regular table data text */
+        }
+
+        thead {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        tbody tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tbody tr:hover {
+            background-color: #e9ecef;
+        }
+
+        .card-header {
+            border-bottom: none;
+        }
+
+        @media (max-width: 600px) {
+            .button-container {
+                padding: 10px;
+            }
+
+            .big-button {
+                padding: 15px;
+                font-size: 14px;
+            }
+
+            header h1 {
+                font-size: 20px;
+            }
+        }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div
+          class="card-header bg-primary text-white text-center position-relative"
+        >
+          <a class="text-white" href="../../index.html"
+            ><i
+              class="material-icons position-absolute"
+              style="left: 10px; top: 50%; transform: translateY(-50%)"
+              >arrow_back</i
+            ></a
+          >
+          <h4>शेतकरी योजना</h4>
+          <i
+            class="material-icons position-absolute"
+            style="right: 10px; top: 50%; transform: translateY(-50%)"
+            >person</i
+          >
+        </div>
+      </header>
+      <div class="button-container">
+        <button class="big-button" data-toggle="modal" data-target="#myModal" data-content="content1" >  अतिवृष्टी मदत       </button>
+        <button class="big-button" data-toggle="modal" data-target="#myModal" data-content="content2">   पीकविमा मदत     </button>
+        <button class="big-button" data-toggle="modal" data-target="#myModal" data-content="content3">     प्रधानमंत्री कृषी सिंचन योजना - प्रती थेंब अधिक पिक (सूक्ष्म सिंचन घटक) </button>
+        <button class="big-button" data-toggle="modal" data-target="#myModal" data-content="content4">    कृषी यांत्रिकीकरण उप-अभियान   </button>
+        <button class="big-button" data-toggle="modal" data-target="#myModal" data-content="content5">  राष्ट्रीय अन्न सुरक्षा अभियान : अन्नधान्य, तेलबिया, ऊस व कापूस </button>
+        <button class="big-button" data-toggle="modal" data-target="#myModal" data-content="content6"> बिरसा मुंडा कृषी क्रांती योजना (आदिवासी उप योजना / आदिवासी उप योजना बाह्य)
+        </button>
+        <button class="big-button" data-toggle="modal" data-target="#myModal" data-content="content7">  डॉ. बाबासाहेब आंबेडकर कृषी स्वावलंबन योजना
+        </button>
+        <button class="big-button" data-toggle="modal" data-target="#myModal" data-content="content8">     एकात्मिक फलोत्पादन विकास अभियान </button>
+        <button class="big-button" data-toggle="modal" data-target="#myModal" data-content="content9">    भाऊसाहेब फुंडकर फळबाग लागवड योजना
+        </button>
+        <button class="big-button" data-toggle="modal" data-target="#myModal" data-content="content10">   राज्य कृषी यांत्रिकीकरण योजना  </button>
+        <button class="big-button" data-toggle="modal" data-target="#myModal" data-content="content11">  डॉ. श्यामाप्रसाद मुखर्जी जन वन विकास योजना
+        </button>
+        
+
+        <!-- Add more buttons as needed -->
+      </div>
+      <footer>
+        <h5>&copy; Digispect Technologies</h5>
+      </footer>
+    </div>
+
+    <!-- Bootstrap Modal -->
+    <div
+      class="modal fade"
+      id="myModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title text-center  " id="myModalLabel">आवश्यक कागदपत्र </h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="modal-body-content">
+            <!-- Content will be loaded here -->
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="ok-button" data-dismiss="modal">
+              OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+      const tableData = {
+// Updated content1 with IDs
+ content1: [
+ 
+    { "id": 1, "document": "अर्ज फॉर्म" },
+    { "id": 2, "document": "ओळखपत्र (आधार कार्ड, मतदान कार्ड, पासपोर्ट)" },
+    { "id": 3, "document": "पत्ता प्रमाणपत्र (राशन कार्ड, युटिलिटी बिल)" },
+    { "id": 4, "document": "भूमी मालकीचे कागदपत्र (भूमी नोंद, विक्री कागदपत्र)" },
+    { "id": 5, "document": "पिकांचे तपशील (पिक विमा कागदपत्र, पिकाच्या नुकसानीचे पुरावे)" },
+    { "id": 6, "document": "बँक खाते तपशील" },
+    { "id": 7, "document": "शपथपत्र" },
+    { "id": 8, "document": "स्थानिक प्राधिकरणाचे प्रमाणपत्र" },
+    { "id": 9, "document": "वैद्यकीय अहवाल" },
+    { "id": 10, "document": "अतिरिक्त कागदपत्रे (गेल्या वर्षीचे पिक उत्पादनाचे रेकॉर्ड, विमा दावा कागदपत्रे)" }
+
+
+],
+
+// Updated content2 with IDs
+content2: [
+
+
+    { "id": 1, "document": "कृषी जमिनीचे दस्तावेज" },
+    { "id": 2, "document": "कृषकाचा आधार कार्ड" },
+    { "id": 3, "document": "पिकांची माहिती" },
+    { "id": 4, "document": "बँक खाते माहिती" },
+    { "id": 5, "document": "अधिकाऱ्यांचा शिफारस पत्र" },
+    { "id": 6, "document": "कृषकाच्या प्रतिमेची फोटोग्राफ" },
+    { "id": 7, "document": "पिक विमा पॉलिसी" },
+    { "id": 8, "document": "कृषी संबंधित इतर दस्तावेज" }
+
+
+
+
+],
+
+// Updated content3 with IDs
+content3: [
+    
+
+    { "id": 1, "document": "७/१२ प्रमाणपत्र" },
+    { "id": 2, "document": "८-ए प्रमाणपत्र" },
+    { "id": 3, "document": "वीज बिल" },
+    { "id": 4, "document": "खरेदी केलेल्या संचाचे बिल" },
+    { "id": 5, "document": "पूर्वसंमती पत्र" },
+    { "id": 6, "document": "जात प्रमाणपत्र" },
+    { "id": 7, "document": "आधार कार्ड" }
+
+
+
+
+],
+
+
+// ---------------------------------------------
+
+// Updated content4 with IDs
+content4: [
+
+    { "id": 1, "document": "आधार कार्ड" },
+    { "id": 2, "document": "७/१२ उतारा" },
+    { "id": 3, "document": "८ अ दाखला" },
+    { "id": 4, "document": "खरेदी करावयाच्या अवजाराचे कोटेशन व केंद्र शासनाच्या मान्यताप्राप्त तपासणी संस्थेने दिलेला तपासणी अहवाल" },
+    { "id": 5, "document": "जातीचा दाखला (अनु. जाती व अनु. जमाती साठी)" },
+    { "id": 6, "document": "स्वयं घोषणापत्र" },
+    { "id": 7, "document": "पूर्वसंमती पत्र" }
+
+
+],
+
+// Updated content5 with IDs
+content5: [
+
+    { "id": 1, "document": "७/१२ प्रमाणपत्र" },
+    { "id": 2, "document": "८-ए प्रमाणपत्र" },
+    { "id": 3, "document": "खरेदी करण्याचे साधन / उपकरणांचे कोटेशन (पंप, पाईप, शेततळे या घटकांकरीता)" },
+    { "id": 4, "document": "केंद्र सरकारच्या मान्यताप्राप्त एजन्सीचे चाचणी प्रमाणपत्र (पंप घटकासाठी)" },
+    { "id": 5, "document": "अनुसूचित जाती, अनुसूचित जमाती लाभार्थींसाठी जात प्रमाणपत्र (आवश्यक असल्यास)" },
+    { "id": 6, "document": "हमीपत्र" },
+    { "id": 7, "document": "पूर्वसंमती पत्र" }
+
+
+],
+
+// Updated content6 with IDs
+content6: [
+    
+
+    { "id": 1, "document": "जातीचा वैध दाखला" },
+    { "id": 2, "document": "७/१२ व ८-अ चा उतारा" },
+    { "id": 3, "document": "उत्पन्नाचा दाखला" },
+    { "id": 4, "document": "लाभार्थीचे प्रतिज्ञापत्र (100/500 रु च्या स्टॅम्प पेपरवर)" },
+    { "id": 5, "document": "अपंग असल्यास प्रमाणपत्र" },
+    { "id": 6, "document": "तलाठी यांचेकडील दाखला - सामाईक एकूण धारणा क्षेत्राबाबतचा दाखला (0.40 ते 6 हेक्टर मर्यादेत); विहीर नसल्याबाबत प्रमाणपत्र; प्रस्तावित विहीर पुर्वीपासून अस्तित्वात असलेल्या विहीरीपासून 500 फूटापेक्षा जास्त अंतरावर असलेचा दाखला; प्रस्तावित विहीर सर्व्हे नं. नकाशा व चतु:सीमा" },
+    { "id": 7, "document": "भूजल सर्वेक्षण विकास यंत्रणेकडील पाणी उपलब्धतेचा दाखला" },
+    { "id": 8, "document": "कृषि अधिकारी (विघयो) यांचे क्षेत्रीय पाहणी व शिफारसपत्र" },
+    { "id": 9, "document": "गट विकास अधिकारी यांचे शिफारसपत्र" },
+    { "id": 10, "document": "ज्या जागेवर विहीर घ्यावयाची आहे त्याजागेचा फोटो (महत्वाची खुणेसह व लाभार्थी सह)" },
+    { "id": 11, "document": "मा. प्रकल्प अधिकारी, आदिवासी विकास प्रकल्प यांचेकडील आदिवासी उपयोजनेतून केंद्र शासनाच्या विशेष केंद्रीय सहाय्य (SCA) व घटनेच्या कलम 275 (A) अंतर्गत उपलब्ध करून दिलेल्या निधीतून राबवण्यात येणा-या योजनेतून लाभ घेतलेला नाही असे प्रमाणपत्र" },
+    { "id": 12, "document": "ग्रामसभेचा ठराव" }
+
+
+],
+
+// Updated content7 with IDs
+ content7: [
+   
+ 
+    { "id": 1, "document": "सक्षम प्राधिकारी यांचेकडील अनुसूचित जातीचे जात प्रमाणपत्र" },
+    { "id": 2, "document": "७/१२ व ८-अ चा उतारा" },
+    { "id": 3, "document": "तहसीलदार यांचेकडील मागील वर्षीचे वार्षिक उत्पन्न प्रमाणपत्र (रु. 1,50,000/- पर्यंत)" },
+    { "id": 4, "document": "लाभार्थीचे प्रतिज्ञापत्र (100/500 रु च्या स्टॅम्प पेपरवर)" },
+    { "id": 5, "document": "अपंग असल्यास प्रमाणपत्र" },
+    { "id": 6, "document": "तलाठी यांचेकडील दाखला - सामाईक एकूण धारणा क्षेत्राबाबतचा दाखला (0.40 ते 6 हेक्टर मर्यादेत); विहीर नसल्याबाबत प्रमाणपत्र; प्रस्तावित विहीर पुर्वीपासून अस्तित्वात असलेल्या विहीरीपासून 500 फूटापेक्षा जास्त अंतरावर असलेचा दाखला; प्रस्तावित विहीर सर्व्हे नं. नकाशा व चतु:सीमा" },
+    { "id": 7, "document": "भूजल सर्वेक्षण विकास यंत्रणेकडील पाणी उपलब्धतेचा दाखला" },
+    { "id": 8, "document": "कृषि अधिकारी (विघयो) यांचे क्षेत्रीय पाहणी व शिफारसपत्र" },
+    { "id": 9, "document": "गट विकास अधिकारी यांचे शिफारसपत्र" },
+    { "id": 10, "document": "ज्या जागेवर विहीर घ्यावयाची आहे त्याजागेचा फोटो (महत्वाची खुणेसह व लाभार्थी सह)" },
+    { "id": 11, "document": "ग्रामसभेचा ठराव" }
+
+
+],
+
+// Updated content8 with IDs
+ content8: [
+ 
+    { "id": 1, "document": "७/१२ प्रमाणपत्र" },
+    { "id": 2, "document": "८-ए प्रमाणपत्र" },
+    { "id": 3, "document": "अनुसूचित जाती, अनुसूचित जमाती लाभार्थींसाठी जात प्रमाणपत्र (आवश्यक असल्यास)" },
+    { "id": 4, "document": "खरेदी करण्याचे साधन / उपकरणांचे कोटेशन किंवा बिल" }
+
+
+],
+
+// Updated content9 with IDs
+ content9: [
+
+
+ 
+    { "id": 1, "document": "७/१२ व 8-अ उतारा" },
+    { "id": 2, "document": "हमीपत्र" },
+    { "id": 3, "document": "संयुक्त खातेदार असल्यास सर्व खातेदारांचे संमतीपत्र" },
+    { "id": 4, "document": "जातीचे प्रमाणपत्र (अनु.जाती/अनु.जमाती शेतकऱ्यांसाठी)" }
+
+
+],
+
+// Updated content10 with IDs
+ content10: 
+ [
+    { "id": 1, "document": "आधार कार्ड" },
+    { "id": 2, "document": "७/१२ उतारा" },
+    { "id": 3, "document": "८ अ दाखला" },
+    { "id": 4, "document": "खरेदी करावयाच्या अवजाराचे कोटेशन व केंद्र शासनाच्या मान्यताप्राप्त तपासणी संस्थेने दिलेला तपासणी अहवाल" },
+    { "id": 5, "document": "जातीत दाखला (अनु. जाती व अनु. जमाती साठी)" },
+    { "id": 6, "document": "स्वयं घोषणापत्र" },
+    { "id": 7, "document": "पूर्वसंमती पत्र" }
+] ,
+
+// Updated content11 with IDs
+ content11: [
+    
+ 
+    { "id": 1, "document": "आधार कार्ड" },
+    { "id": 2, "document": "७/१२ उतारा" },
+    { "id": 3, "document": "बँक खाते पासबुक" }
+
+
+],
+
+// Updated content12 with IDs
+ 
+
+      };
+
+      $(document).ready(function () {
+        $('button[data-target="#myModal"]').click(function () {
+          const contentId = $(this).data("content");
+          const data = tableData[contentId];
+          let tableHtml = `
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>अनु क्रं.</th>
+                                <th>कागतपत्राचे  नाव </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+
+          data.forEach((item) => {
+            tableHtml += `
+                        <tr>
+                            <td>${item.id}</td>
+                            <td>${item.document}</td>
+                        </tr>
+                    `;
+          });
+
+          tableHtml += `
+                        </tbody>
+                    </table>
+                `;
+
+          $("#modal-body-content").html(tableHtml);
+        });
+      });
+    </script>
+  </body>
+</html>
